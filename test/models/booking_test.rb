@@ -22,6 +22,11 @@ class BookingTest < ActiveSupport::TestCase
     booking.datetime_end = "2020-10-10 13:00:00"
     booking.validate
     assert booking.errors[:datetime_start].blank?
+  end
+
+  test "validate business time" do
+    booking = Booking.new
+    booking.datetime_start = "2020-10-10 08:00:00"
 
     # time after business time
     booking.datetime_end = "2020-10-10 18:00:01"
